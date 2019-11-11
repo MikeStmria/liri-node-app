@@ -34,13 +34,27 @@ switch (searchType) {
 function searchSong (keyword) {
     var spotify = new Spotify(keys.Spotify);
 
-    spotify.search({ type: 'track', query: keyword }, function(err, data) {
+    spotify.search({ type: 'track', query: keyword, limit:1 }, function(err, data) {
         if (err) {
           return console.log('Error occurred: ' + err);
         }
-       
-      console.log(data); 
-      });
+        var trocks = data.tracks.items;
+
+        for (i=0; i < trocks.length;i++){
+            // console.log(trocks[i].album.name); // Test console.log
+            console.log(`Artist: ${trocks[i].artists[i].name}
+                \nSong: ${trocks[i].name}
+                \nlink: ${trocks[i].external_urls.spotify}
+                \nAlbum: ${trocks[i].album.name}`);
+        }
+    });
+    
+
+    // for (i in trocks) {
+    // }
+    
+    
+        
 };
 
 // Bands in Town Search
