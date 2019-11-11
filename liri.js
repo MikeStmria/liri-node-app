@@ -57,7 +57,7 @@ function bandSearch(keyword) {
             console.log(`${info[i].lineup} will be performing in ${info[i].venue.city} ${info[i].venue.name} on ${info[i].datetime}`);
         }
         
-        // console.log(info);
+        // console.log(info); // Is this working?
     });
 }
 
@@ -68,7 +68,25 @@ function movieSearch(keyword) {
 
     axios.get(movieQuery)
     .then( function (response){
-        console.log(response);
+        var movieInfo = response.data;
+        // console.log(movieInfo.Ratings[1].Value); //Is this working console.log
+
+        if (keyword) {
+
+            console.log(`Title: ${movieInfo.Title}
+                        \nReleased: ${movieInfo.Released}
+                        \n ** Ratings **
+                        \nIMDB: ${movieInfo.imdbRating}
+                        \nRotten Tomatos: ${movieInfo.Ratings[1].Value}
+                        \n -----
+                        \nCountry: ${movieInfo.Country}
+                        \nLanguage: ${movieInfo.Language}
+                        \nPlot: ${movieInfo.Plot}
+                        \nActors: ${movieInfo.Actors}`)
+        }
+        else {
+            console.log("Mr. Nobody");
+        }
     })
 }
 
