@@ -42,7 +42,8 @@ function searchSong (keyword) {
 
         for (i=0; i < trocks.length;i++){
             // console.log(trocks[i].album.name); // Test console.log
-            console.log(`Artist: ${trocks[i].artists[i].name}
+            console.log(`-----
+                \nArtist: ${trocks[i].artists[i].name}
                 \nSong: ${trocks[i].name}
                 \nlink: ${trocks[i].external_urls.spotify}
                 \nAlbum: ${trocks[i].album.name}`);
